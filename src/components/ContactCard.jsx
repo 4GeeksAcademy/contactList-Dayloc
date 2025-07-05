@@ -1,13 +1,13 @@
 import React from "react";
 import rigoBaby from "../assets/img/rigo-baby.jpg";
 
-function ContactCard({ name, adress, phone, email, id, deleted }) {
+function ContactCard({ name, adress, phone, email, id }) {
 
     return (
         <div>
-            <div className="row">
+            <div className="row d-flex">
 
-                <div className="contact-card">
+                <div className="contact-card d-flex">
                     <img src={rigoBaby} alt="Mike Anamendolla" className="contact-photo mx-5" />
 
                     <div className="container">
@@ -19,7 +19,7 @@ function ContactCard({ name, adress, phone, email, id, deleted }) {
                                     <i className="fas fa-pen"></i>
                                 </button>
 
-                                <button onClick={() => deleted(id)} className="delete-btn" title="Eliminar">
+                                <button onClick={() => console.log(`Estoy eliminando `, {id})} className="delete-btn" title="Eliminar">
                                     <i className="fas fa-trash"></i>
                                 </button>
 

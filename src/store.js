@@ -15,11 +15,19 @@ export default function storeReducer(store, action = {}) {      //store es lo qu
       listaAgendas: action.payload  //guardo en lista de agenda lo que viene del payload 
     }
 
+    // el dispatch tiene el control de los casos(switch) del storeReducer, es el administrador al que el voy a decir el tipo de accion que va a hacer y que va a mandar mediante el payload
+    //para modificar la variable de ese caso
+
     case 'guardarContactos':
     return{
       ...store,
-      listaContactos: action.payloaod
+      listaContactos: action.payload
     }
+    case 'eliminarContacto':
+      return{
+        ...store,
+        listaContactos: store.listaContactos.filter((contacto) => contacto.id !== action.payload) 
+      }
 
     default:
       throw Error('Unknown action.');
