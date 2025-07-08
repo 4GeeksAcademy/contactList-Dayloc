@@ -23,13 +23,28 @@ export default function storeReducer(store, action = {}) {      //store es lo qu
       ...store,
       listaContactos: action.payload
     }
+
+    case 'agregarContacto':
+      return{
+        ...store,
+        contactos: [...store.listaContactos, action.payload]
+      }
+
     case 'eliminarContacto':
       return{
         ...store,
         listaContactos: store.listaContactos.filter((contacto) => contacto.id !== action.payload) 
       }
 
+      case 'actualizarContacto':
+        return{
+           ...store,
+        listaContactos: store.listaContactos.map((contacto) => contacto.id === action.payload.id ? action.payload : contacto)
+        }
+
+
     default:
       throw Error('Unknown action.');
-  }    
+  }   
+   
 }

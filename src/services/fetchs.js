@@ -43,7 +43,7 @@ export const createAgenda = async (slug, dispatch) => {
 
 export const deleteContact = async (id, dispatch, slug) => {
     try {
-        const response = await fetch(`${URL_base}agendas/${slug}`, {
+        const response = await fetch(`${URL_base}agendas/${slug}/contacts/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +53,8 @@ export const deleteContact = async (id, dispatch, slug) => {
             throw new Error("Error al eliminar el contacto", response.status);
         }
         dispatch({
-
+            type: 'eliminarContacto',
+            payload: id,
         })
 
     } catch (error) {
@@ -81,11 +82,55 @@ export const getContacts = async (dispatch, slug) => {
     } catch (error) {
         console.log('Error al obtener todas las agendas', error)
     }
+}
 
+export const createContact = async (contact, dispatch, slug) => {
+    try {
 
+        const response = await fetch(`${URL_base}agendas/${slug}/contacts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contact)
+        })
+        if (!response.ok) {
+            throw new Error("Error al crear la contacto", response.status);
+        }
+        const data = await response.json()
+        dispatch({
+            type: 'agregarContacto',
+            payload: data,
+        })
 
+    } catch (error) {
+        console.log('Error', error)
+    }
+}
 
+export const updateContact = async(contact, dispatch, slug) => {
 
+    try {
 
+        const response = await fetch(`${URL_base}agendas/${slug}/contacts/${contact.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contact)
+        })
+        if(!response.ok) {
+        throw new Error("Error al actualizar el contacto", response.status);
+        }
 
+const data = await response.json()
+dispatch({
+    type: 'actualizarContacto',
+    payload: data,
+})
+
+    } catch (error) {
+    console.log('Error', error)
+}
+    
 }

@@ -23,22 +23,22 @@ function Contacts() {
   console.log(listaContactos)
   console.log({ slug })
   return (
-    <div>
-      <h1>Soy la lista de contactos de {slug}</h1>
+    <div className='container text-center mb-2'>
+      <h1 className='m-3'>Soy la lista de contactos de {slug}</h1>
 
       <div>
-        <button className='btn btn-primary' onClick={() => handdleNavigate()}>
+        <button className='btn btn-primary m-5' onClick={() => handdleNavigate()}>
           Add Contact
         </button>
 
         <div> {
 
-          listaContactos === 0 ?  (<p>'Esta agenda no tiene contactos)</p>) : (
+          listaContactos === 0 ? (<p>'Esta agenda no tiene contactos)</p>) : (
             <div className="row">
               {
                 listaContactos.map((contacto) => (
                   <div key={contacto.id}>
-                    <ContactCard name={contacto.name} adress={contacto.adress} phone={contacto.phone} email={contacto.email} id={contacto.id} />
+                    <ContactCard name={contacto.name} adress={contacto.address} phone={contacto.phone} email={contacto.email} id={contacto.id} slug={slug} />
                   </div>
                 ))
               }
