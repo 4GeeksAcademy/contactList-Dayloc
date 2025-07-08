@@ -12,66 +12,50 @@ function ContactCard({ name, adress, phone, email, id, slug }) {
         deleteContact(id, dispatch, slug)
     }
 
-
     const handleNavigate = () => {
         navigate(`/addContacts/${slug}/${id}`)
     }
 
     return (
-        <div>
-            <div className="row d-flex card-contacts">
+        <div className="card-contacts row my-2">
+            <img src={rigoBaby} alt="Mike Anamendolla" className="contact-photo m-2 col-md-2 col-12 img-fluid rounded-circle" />
 
-                <div className="contact-card d-flex">
-                    <img src={rigoBaby} alt="Mike Anamendolla" className="contact-photo mx-5" />
+            <div className="col text-start">
+                <div className="contact-header">
+                    <h2 className="contact-name">{name}</h2>
+                </div>
 
-                    <div className="container">
-                        <div className="contact-header">
-                            <h2 className="contact-name">{name}</h2>
-
-                        </div>
-
-                        <div className="contact-details">
-                            <div className="detail">
-                                <i className="fas fa-map-marker-alt"></i>
-                                <span>{adress}</span>
-                            </div>
-
-                            <div className="detail">
-                                <i className="fas fa-phone-alt"></i>
-                                <span>{phone}</span>
-                            </div>
-                            <div className="detail">
-                                <i className="fas fa-envelope"></i>
-                                <span>{email}</span>
-                            </div>
-                        </div>
-
+                <div className="contact-details">
+                    <div className="detail">
+                        <i className="fas fa-map-marker-alt mx-1"></i>
+                        <span>{adress}</span>
                     </div>
 
-                    <div className="contact-actions d-flex gap-2 m-1">
+                    <div className="detail">
+                        <i className="fas fa-phone-alt mx-1"></i>
+                        <span>{phone}</span>
+                    </div>
 
-                        <div>
-                            <button onClick={() => handleNavigate()} className="btn btn-primary" title="Editar">
-                                Editar
-                            </button>
-                        </div>
-
-                        <div>
-                            <button onClick={() => handleDelete()} className="btn btn-danger" title="Eliminar">
-                                Eliminar
-                            </button>
-                        </div>
-
-
+                    <div className="detail">
+                        <i className="fas fa-envelope mx-1"></i>
+                        <span>{email}</span>
                     </div>
                 </div>
 
             </div>
 
+            <div className="col-md-2 col-12 d-flex flex-md-column flex-row justify-content-end align-items-md-end align-item-center my-2 my-md-0 gap-2">
 
+                <button onClick={() => handleNavigate()} className="btn btn-primary w-100 w-md-auto" title="Editar">
+                    Editar
+                </button>
 
+                <button onClick={() => handleDelete()} className="btn btn-danger w-100 w-md-auto" title="Eliminar">
+                    Eliminar
+                </button>
+
+            </div>
         </div>
-
     );
 };
 

@@ -41,14 +41,14 @@ function AddContact() {
   }
 
   return (
-    <div>
-      <form className="mx-4">
+    <div className='container'>
+      <form className="row border border-2 border-light-subtle rounded-3 p-4 border-opacity-75 pt-2">
 
         {
           id ? <h1 className="text-center">Edit contact</h1> : <h1 className="text-center">Add a new contact</h1>
         }
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-6 col-12">
           <label htmlFor="exampleInputEmai4" className="form-label fw-bold">Full Name</label>
           <input
             onChange={(e) => setContact({ ...contact, name: e.target.value })}
@@ -61,7 +61,7 @@ function AddContact() {
 
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-6 col-12">
           <label htmlFor="exampleInputPassword1" className="form-label fw-bold">Email</label>
           <input
             onChange={(e) => setContact({ ...contact, email: e.target.value })}
@@ -71,7 +71,7 @@ function AddContact() {
             value={contact.email} />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-3 col-12">
           <label htmlFor="exampleInputEmail2" className="form-label fw-bold">Phone</label>
           <input
             onChange={(e) => setContact({ ...contact, phone: e.target.value })}
@@ -82,7 +82,7 @@ function AddContact() {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-9 col-12">
           <label htmlFor="exampleInputEmail3" className="form-label fw-bold">Address</label>
           <input
             onChange={(e) => setContact({ ...contact, address: e.target.value })}
